@@ -1,8 +1,9 @@
 import { View, StyleSheet } from 'react-native';
-import { router } from 'expo-router';
+import { router, useNavigation } from 'expo-router';
+import { useEffect } from 'react';
 
+import LogOutButton from '../../components/LogOutButton';
 import Icon from '../../components/Icon';
-import Header from '../../components/Header';
 import MemoListItem from '../../components/MemoListItem';
 import CircleButton from '../../components/CircleButton';
 
@@ -11,9 +12,14 @@ const handlePress = (): void => {
 };
 
 const Index = () => {
+  const navigation = useNavigation();
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => { return <LogOutButton /> }
+    });
+  }, []);
   return (
     <View style={styles.container}>
-      <Header />
       <View>
         <MemoListItem />
         <MemoListItem />
