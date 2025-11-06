@@ -14,7 +14,7 @@ const Edit = () => {
   return (
     <KeyboardAvoidingView behavior='height' style={styles.container}>
       <View style={styles.inputContainer}>
-        <TextInput multiline style={styles.input} value={'買い物リスト\nテキスト'} />
+        <TextInput multiline style={styles.input} value={'買い物リスト\nテキスト'} autoCapitalize="none" />
       </View>
       <CircleButton onPress={handlePress}>
         <Icon name="check" size={40} color="white" />
