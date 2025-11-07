@@ -1,26 +1,27 @@
-import {
-  View, Text,
-  TouchableOpacity, StyleSheet
-} from 'react-native';
-import { Link } from 'expo-router';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { Link } from 'expo-router'
 
-import Icon from './Icon';
-import { type Memo } from '../../types/memo';
+import Icon from './Icon'
+import { type Memo } from '../../types/memo'
 
 interface Props {
-  memo: Memo;
+  memo: Memo
 }
 
 const MemoListItem = (props: Props) => {
-  const { memo } = props;
-  const { bodyText, updatedAt } = memo;
-  if ( bodyText == null || updatedAt == null ) { return null; }
-  const dataString = updatedAt.toDate().toLocaleString('ja-JP');
+  const { memo } = props
+  const { bodyText, updatedAt } = memo
+  if (bodyText == null || updatedAt == null) {
+    return null
+  }
+  const dataString = updatedAt.toDate().toLocaleString('ja-JP')
   return (
     <Link href="/memo/detail" asChild>
       <TouchableOpacity style={styles.memoListItem}>
         <View>
-          <Text numberOfLines={1} style={styles.memoListItemTitle}>{bodyText}</Text>
+          <Text numberOfLines={1} style={styles.memoListItemTitle}>
+            {bodyText}
+          </Text>
           <Text style={styles.memoListItemDate}>{dataString}</Text>
         </View>
         <View>
@@ -30,8 +31,8 @@ const MemoListItem = (props: Props) => {
         </View>
       </TouchableOpacity>
     </Link>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   memoListItem: {
@@ -53,6 +54,6 @@ const styles = StyleSheet.create({
     lineHeight: 16,
     color: '#777',
   },
-});
+})
 
-export default MemoListItem;
+export default MemoListItem

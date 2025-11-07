@@ -1,23 +1,25 @@
 import {
-  Text, StyleSheet, TouchableOpacity,
-  type ViewStyle
-} from 'react-native';
-import type { ReactNode } from 'react';
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  type ViewStyle,
+} from 'react-native'
+import type { ReactNode } from 'react'
 
 interface Props {
-  children: ReactNode;
-  style?: ViewStyle;
-  onPress?: () => void;
+  children: ReactNode
+  style?: ViewStyle
+  onPress?: () => void
 }
 
 const CircleButton = (props: Props) => {
-  const { children, style, onPress } = props;
+  const { children, style, onPress } = props
   return (
     <TouchableOpacity onPress={onPress} style={[styles.circleButton, style]}>
       <Text style={styles.circleButtonLabel}>{children}</Text>
     </TouchableOpacity>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   circleButton: {
@@ -38,6 +40,6 @@ const styles = StyleSheet.create({
     lineHeight: 40,
     color: '#fff',
   },
-});
+})
 
-export default CircleButton;
+export default CircleButton

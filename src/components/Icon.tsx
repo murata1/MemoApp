@@ -1,33 +1,31 @@
-import { createIconSetFromIcoMoon } from "@expo/vector-icons";
-import { useFonts } from "expo-font";
+import { createIconSetFromIcoMoon } from '@expo/vector-icons'
+import { useFonts } from 'expo-font'
 
-import fontDate from "../../assets/fonts/icomoon.ttf";
-import fontSelection from "../../assets/fonts/selection.json";
+import fontDate from '../../assets/fonts/icomoon.ttf'
+import fontSelection from '../../assets/fonts/selection.json'
 
 const CustomIcon = createIconSetFromIcoMoon(
   fontSelection,
-  "IcoMoon",
-  "icomoon.ttf"
-);
+  'IcoMoon',
+  'icomoon.ttf'
+)
 
 interface Props {
-  name: string;
-  size: number;
-  color: string;
+  name: string
+  size: number
+  color: string
 }
 
 const Icon = (props: Props) => {
-  const { name, size, color } = props;
+  const { name, size, color } = props
   const [fontsLoaded] = useFonts({
     IcoMoon: fontDate,
-  });
+  })
 
   if (!fontsLoaded) {
-    return null;
+    return null
   }
-  return (
-    <CustomIcon name={name} size={size} color={color} />
-  );
+  return <CustomIcon name={name} size={size} color={color} />
 }
 
-export default Icon;
+export default Icon

@@ -1,21 +1,21 @@
-import { Text,TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, TouchableOpacity, StyleSheet } from 'react-native'
 
 interface Props {
-  label: string;
-  onPress?: () => void;
+  label: string
+  onPress?: () => void
 }
 
 const Button = (props: Props) => {
-  const { label, onPress } = props;
+  const { label, onPress } = props
   return (
     <TouchableOpacity onPress={onPress} style={styles.button}>
       <Text style={styles.buttonLabel}>{label}</Text>
     </TouchableOpacity>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
-   button: {
+  button: {
     backgroundColor: '#06c',
     borderRadius: 4,
     alignSelf: 'flex-start',
@@ -28,6 +28,6 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 24,
   },
-});
+})
 
-export default Button;
+export default Button

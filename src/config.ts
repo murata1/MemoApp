@@ -1,8 +1,8 @@
-import { initializeApp } from 'firebase/app';
+import { initializeApp } from 'firebase/app'
 // @ts-ignore - Firebase v12でのReact Native永続化サポート
-import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
-import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage';
+import { initializeAuth, getReactNativePersistence } from 'firebase/auth'
+import { getFirestore } from 'firebase/firestore'
+import ReactNativeAsyncStorage from '@react-native-async-storage/async-storage'
 
 // Firebaseの設定情報(Firebase Consoleから取得)
 const firebaseConfig = {
@@ -11,18 +11,18 @@ const firebaseConfig = {
   projectId: process.env.EXPO_PUBLIC_FB_PROJECT_ID,
   storageBucket: process.env.EXPO_PUBLIC_FB_STORAGE_BUCKET,
   messagingSenderId: process.env.EXPO_PUBLIC_FB_MESSAGING_SENDER_ID,
-  appId: process.env.EXPO_PUBLIC_FB_APP_ID
-};
+  appId: process.env.EXPO_PUBLIC_FB_APP_ID,
+}
 
 // Firebaseアプリを初期化
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig)
 
 // Authの初期化（React Native用の永続化設定）
 const auth = initializeAuth(app, {
-  persistence: getReactNativePersistence(ReactNativeAsyncStorage)
-});
+  persistence: getReactNativePersistence(ReactNativeAsyncStorage),
+})
 
 // Firestoreの初期化
-const db = getFirestore(app);
+const db = getFirestore(app)
 
-export { app, auth, db };
+export { app, auth, db }

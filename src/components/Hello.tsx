@@ -1,17 +1,18 @@
-import { View, Text, StyleSheet, type TextStyle } from 'react-native';
+import { View, Text, StyleSheet, type TextStyle } from 'react-native'
 
 interface Props {
-  children: string;
-  bang?: boolean;
-  style?: TextStyle;
+  children: string
+  bang?: boolean
+  style?: TextStyle
 }
 
 const Hello = (props: Props) => {
-  const { children, bang, style } = props;
+  const { children, bang, style } = props
   return (
     <View>
       <Text style={[styles.text, style]}>
-        Hello {children}{bang === true ? '!' : ''}
+        Hello {children}
+        {bang === true ? '!' : ''}
       </Text>
     </View>
   )
@@ -24,9 +25,7 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     backgroundColor: 'blue',
     padding: 16,
-  }
-});
+  },
+})
 
-
-
-export default Hello;
+export default Hello
