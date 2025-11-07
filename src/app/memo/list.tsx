@@ -1,4 +1,4 @@
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, FlatList } from 'react-native';
 import { router, useNavigation } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { collection, onSnapshot, query, orderBy } from 'firebase/firestore';
@@ -8,7 +8,7 @@ import Icon from '../../components/Icon';
 import MemoListItem from '../../components/MemoListItem';
 import CircleButton from '../../components/CircleButton';
 import { db, auth } from '../../config';
-import { type Memo } from '../../types/memo';
+import { type Memo } from '../../../types/memo';
 
 const handlePress = (): void => {
   router.push('/memo/create');
@@ -43,11 +43,10 @@ const List = () => {
   }, []);
   return (
     <View style={styles.container}>
-      <View>
-        {memos.map((memo) => (
-          <MemoListItem memo={memo} />
-        ))}
-      </View>
+      <FlatList
+        data={memos}
+        renderItem={({ item }) => <MemoListItem memo={item} />}
+      />
       <CircleButton onPress={handlePress}>
         <Icon name="plus" size={40} color="white" />
       </CircleButton>
