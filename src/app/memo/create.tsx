@@ -1,42 +1,51 @@
-import {View, TextInput, StyleSheet,} from 'react-native';
-import { router } from 'expo-router';
-import { collection, addDoc, Timestamp } from 'firebase/firestore';
-import { useState } from 'react';
+import { View, TextInput, StyleSheet } from 'react-native'
+import { router } from 'expo-router'
+import { collection, addDoc, Timestamp } from 'firebase/firestore'
+import { useState } from 'react'
 
-import KeyboardAvoidingView from '../../components/KeyboardAvoidingView';
-import CircleButton from '../../components/CircleButton';
-import Icon from '../../components/Icon';
-import { db, auth } from '../../config';
+import KeyboardAvoidingView from '../../components/KeyboardAvoidingView'
+import CircleButton from '../../components/CircleButton'
+import Icon from '../../components/Icon'
+import { db, auth } from '../../config'
 
 const handlePress = (bodyText: string): void => {
-  if (auth.currentUser == null) { return; }
-  const ref = collection(db, `user/${auth.currentUser.uid}/memos`);
+  if (auth.currentUser == null) {
+    return
+  }
+  const ref = collection(db, `user/${auth.currentUser.uid}/memos`)
   addDoc(ref, {
     bodyText,
     updatedAt: Timestamp.fromDate(new Date()),
   })
-  .then((docRef) => {
-    console.log('success', docRef.id);
-    router.back();
-  })
-  .catch((error) => {
-    console.error(error);
-  });
-};
+    .then((docRef) => {
+      console.log('success', docRef.id)
+      router.back()
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+}
 
 const Create = () => {
-  const [bodyText, setBodyText] = useState('');
+  const [bodyText, setBodyText] = useState('')
   return (
     <KeyboardAvoidingView style={styles.container}>
       <View style={styles.inputContainer}>
-        <TextInput multiline style={styles.input} value={bodyText} onChangeText={setBodyText} autoCapitalize="none" autoFocus />
+        <TextInput
+          multiline
+          style={styles.input}
+          value={bodyText}
+          onChangeText={setBodyText}
+          autoCapitalize="none"
+          autoFocus
+        />
       </View>
       <CircleButton onPress={() => handlePress(bodyText)}>
         <Icon name="check" size={40} color="white" />
       </CircleButton>
     </KeyboardAvoidingView>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -53,6 +62,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
   },
-});
+})
 
-export default Create;
+export default Create
